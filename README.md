@@ -38,7 +38,7 @@
     .success-icon {
       width: 90px;
       height: 90px;
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
       border-radius: 50%;
       background: rgba(34, 197, 94, 0.15);
       display: flex;
@@ -53,37 +53,27 @@
     }
 
     h1 {
-      font-size: 30px;
-      margin-bottom: 14px;
+      font-size: 34px;
+      margin-bottom: 18px;
       font-weight: 700;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 24px;
     }
 
     p {
       color: #cbd5e1;
-      line-height: 1.6;
-      font-size: 15px;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      text-decoration: none;
-      background: white;
-      color: #0f172a;
-      padding: 14px 24px;
-      border-radius: 14px;
-      font-weight: 600;
-      transition: 0.25s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
+      line-height: 1.7;
+      font-size: 18px;
     }
 
     .footer {
-      margin-top: 24px;
-      font-size: 13px;
+      margin-top: 40px;
+      font-size: 15px;
       color: #94a3b8;
     }
 
@@ -104,34 +94,38 @@
       }
 
       h1 {
-        font-size: 26px;
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
-    
+
     <div class="success-icon">
       <div class="checkmark">✓</div>
     </div>
 
     <h1>Email Verified</h1>
 
+    <div class="divider"></div>
+
     <p>
-      Thank you for verifying your email address.  
+      Thank you for verifying your email address.
       Your account has been successfully activated and is now ready to use.
     </p>
-
-    <a href="#" class="button">
-      Continue
-    </a>
 
     <div class="footer">
       You may now return to the app.
     </div>
 
   </div>
+
 </body>
 </html>
