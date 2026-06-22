@@ -6,6 +6,7 @@
   <title>Macrova — AI Nutrition & Macro Tracker</title>
   <meta name="description" content="AI-powered nutrition tracking with photo food logging, personalized meal plans, and weekly health insights. Hit your goals without the spreadsheets. Free on Android." />
   <meta name="theme-color" content="#07090B" />
+  <script>document.documentElement.className += ' js';</script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -177,36 +178,37 @@
     .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
     .hero-meta svg { color: var(--mint); }
 
-    /* Hero phone + floating cards */
-    .hero-stage { position: relative; margin-top: 64px; width: 100%; max-width: 940px; display: flex; align-items: center; justify-content: center; perspective: 1400px; }
-    .hero-phone {
-      position: relative; width: clamp(230px, 56vw, 300px); z-index: 3; border-radius: 42px; padding: 9px;
+    /* Hero 3-phone cluster + reusable device frame */
+    .hero-stage { position: relative; margin-top: 72px; width: 100%; max-width: 1000px; display: flex; align-items: center; justify-content: center; perspective: 1600px; }
+    .phone-cluster { display:flex; align-items:center; justify-content:center; transform-style: preserve-3d; transition: transform .3s ease-out; will-change: transform; }
+
+    .device {
+      position: relative; border-radius: 40px; padding: 8px; flex-shrink: 0;
       background: linear-gradient(160deg,#1c2024,#0c0f12);
-      box-shadow: 0 40px 90px rgba(0,0,0,0.6), 0 0 70px rgba(52,200,224,0.16), inset 0 0 0 1px rgba(255,255,255,0.07);
-      transform-style: preserve-3d; transition: transform .25s ease-out; will-change: transform;
+      box-shadow: 0 36px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.07);
     }
-    .hero-phone img { width: 100%; border-radius: 34px; display: block; }
-    .hero-phone .notch { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 92px; height: 24px; background: #060708; border-radius: 0 0 14px 14px; z-index: 4; }
+    .device img { width: 100%; height: auto; border-radius: 32px; display: block; }
+    .device .notch { position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 72px; height: 19px; background: #060708; border-radius: 0 0 12px 12px; z-index: 2; }
 
-    .float-card {
-      position: absolute; z-index: 5; background: rgba(18,22,26,0.62);
-      backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
-      border: 1px solid var(--border-2); border-radius: 18px; padding: 14px 16px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.5); white-space: nowrap; transform: translateZ(60px);
+    .phone-cluster .device.center {
+      width: clamp(206px, 30vw, 268px); z-index: 3; transform: translateY(-10px);
+      box-shadow: 0 52px 110px rgba(0,0,0,0.72), 0 0 90px rgba(52,200,224,0.22), inset 0 0 0 1px rgba(255,255,255,0.09);
     }
-    .fc-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); font-weight: 700; margin-bottom: 4px; }
-    .fc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; display:flex; align-items:baseline; gap:4px; }
-    .fc-value small { font-size: 0.78rem; font-weight: 600; color: var(--text-faint); }
-    .fc-row { display: flex; align-items: center; gap: 11px; }
-    .fc-ico { width: 38px; height: 38px; border-radius: 11px; display:grid; place-items:center; flex-shrink:0; }
-    .fc-bar { height: 5px; border-radius: 5px; background: rgba(255,255,255,0.12); margin-top: 8px; overflow:hidden; width: 110px; }
-    .fc-bar > i { display:block; height:100%; border-radius:5px; }
+    .phone-cluster .device.side  { width: clamp(166px, 24vw, 222px); z-index: 1; }
+    .phone-cluster .device.left  { transform: rotate(-8deg) translateY(36px); margin-right: -44px; }
+    .phone-cluster .device.right { transform: rotate(8deg)  translateY(36px); margin-left:  -44px; }
 
-    .fc-protein { top: 8%; left: -2%; animation: floaty 6s ease-in-out infinite; }
-    .fc-carbs   { top: 40%; right: -4%; animation: floaty 7s ease-in-out infinite 0.6s; }
-    .fc-cal     { bottom: 16%; left: -6%; animation: floaty 6.5s ease-in-out infinite 1.2s; }
-    .fc-scan    { bottom: 4%; right: 0%; animation: floaty 7.5s ease-in-out infinite 0.3s; }
-    @keyframes floaty { 0%,100%{ transform: translateZ(60px) translateY(0) } 50%{ transform: translateZ(60px) translateY(-14px) } }
+    .ai-pill {
+      position: absolute; z-index: 6; top: 3%; right: 4%; display:flex; align-items:center; gap:11px;
+      background: rgba(18,22,26,0.66); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid var(--border-2); border-radius: 50px; padding: 9px 17px 9px 11px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.5); animation: floaty 6s ease-in-out infinite;
+    }
+    .ai-pill .pi { width:32px; height:32px; border-radius:10px; display:grid; place-items:center; flex-shrink:0; }
+    .ai-pill b { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:0.95rem; display:block; line-height:1.1; }
+    .ai-pill .cap { display:block; font-size:0.66rem; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-top:2px; }
+    .ai-pill.two { top:auto; right:auto; bottom: 6%; left: 3%; animation: floaty 7s ease-in-out infinite 0.9s; }
+    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-12px) } }
 
     /* ───────────────────────── STAT STRIP ───────────────────────── */
     .stats { position: relative; z-index: 2; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
@@ -241,10 +243,10 @@
     .feat:hover .feat-icon { transform: scale(1.08) rotate(-4deg); }
     .feat h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size: 1.42rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
     .feat p { color: var(--text-dim); font-size: 0.98rem; line-height: 1.62; }
-    .feat-shot { border-radius: 24px; overflow:hidden; border:1px solid var(--border); box-shadow: var(--shadow-md); background:#0c0f12; }
-    .feat-shot img { width:100%; display:block; }
-    .feat.big .feat-shot { max-width: 300px; margin: 0 auto; }
-    .feat .feat-shot.inline { margin-top: 26px; }
+    /* Feature screenshots are framed phones, width-constrained so they never stretch */
+    .feat-device { max-width: 230px; margin: 28px auto 4px; }
+    .feat.big .feat-device { max-width: 264px; margin: 0 auto; }
+    .feat-tags { display:flex; gap:8px; flex-wrap:wrap; }
 
     /* ───────────────────────── HOW IT WORKS ───────────────────────── */
     .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 60px; }
@@ -295,8 +297,10 @@
     .cta-section { padding: clamp(60px,8vw,90px) 24px; }
     .cta-card { max-width: 980px; margin: 0 auto; border-radius: 36px; padding: clamp(48px,7vw,80px) 32px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(150deg, rgba(52,200,224,0.14), rgba(125,235,196,0.06) 45%, rgba(232,184,80,0.08)); border: 1px solid var(--border-2); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
     .cta-card::before { content:''; position:absolute; width:500px; height:500px; border-radius:50%; top:-200px; left:50%; transform:translateX(-50%); background: radial-gradient(circle, rgba(52,200,224,0.25), transparent 65%); pointer-events:none; }
-    .cta-card h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size: clamp(2rem,5vw,3.4rem); font-weight:800; letter-spacing:-0.04em; line-height:1.06; position:relative; }
+    .cta-card h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size: clamp(2rem,5vw,3.4rem); font-weight:800; letter-spacing:-0.04em; line-height:1.06; position:relative; min-height:2.2em; }
     .cta-card h2 .grad { background: var(--grad-brand); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .type-caret { display:inline-block; color: var(--mint); font-weight:700; margin-left:2px; -webkit-text-fill-color: var(--mint); animation: blink 1.05s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     .cta-card p { color: var(--text-dim); font-size: 1.1rem; margin: 22px auto 0; max-width: 50ch; position:relative; }
     .store-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:40px; position:relative; }
     .store-btn { display:inline-flex; align-items:center; gap:14px; padding: 14px 26px; border-radius: 16px; text-decoration:none; min-height: 60px; transition: transform .2s, box-shadow .2s, opacity .2s; }
@@ -321,8 +325,10 @@
     .footer-copy { color: var(--text-faint); font-size:0.82rem; width:100%; text-align:center; margin-top:34px; padding-top:28px; border-top:1px solid var(--border); }
 
     /* ───────────────────────── SCROLL REVEAL ───────────────────────── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    .reveal.in { opacity: 1; transform: none; }
+    /* Hidden state only applies when JS is present (html.js) so content is
+       never permanently invisible if scripts fail to load. */
+    html.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    html.js .reveal.in { opacity: 1; transform: none; }
     [data-delay="1"]{transition-delay:.08s} [data-delay="2"]{transition-delay:.16s}
     [data-delay="3"]{transition-delay:.24s} [data-delay="4"]{transition-delay:.32s}
 
@@ -342,8 +348,7 @@
       .lang-grid { max-width:none; }
       .steps { grid-template-columns: 1fr; }
       .proof-grid { grid-template-columns: 1fr; }
-      .float-card { transform: scale(.86); }
-      .fc-protein{left:-6%} .fc-carbs{right:-6%} .fc-cal{left:-8%}
+      .phone-cluster { transform: scale(.9); }
     }
     @media (max-width: 640px) {
       nav { padding: 14px 18px; }
@@ -353,10 +358,14 @@
       .stat:nth-child(2)::after { display:none; }
       .stat:nth-child(1),.stat:nth-child(2){ border-bottom:1px solid var(--border); }
       .hero { padding-top: 120px; }
-      .hero-stage { margin-top: 80px; }
-      .fc-carbs, .fc-cal { display:none; }
-      .fc-protein { top:2%; left:-4%; }
-      .fc-scan { bottom:2%; right:-4%; }
+      .hero-stage { margin-top: 60px; }
+      /* scale the whole 3-phone cluster down on small screens and reclaim vertical space */
+      .phone-cluster { transform: scale(.7); transform-origin: top center; margin-bottom: -56px; }
+      .phone-cluster .device.left  { margin-right: -38px; }
+      .phone-cluster .device.right { margin-left:  -38px; }
+      .ai-pill { padding:7px 13px 7px 9px; }
+      .ai-pill.two { display:none; }
+      .ai-pill b { font-size:0.82rem; }
       .lang-grid { grid-template-columns: 1fr; }
     }
 
@@ -414,78 +423,59 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-badge hero-load d1"><span class="dot"></span>AI-Powered Nutrition · Free on Android</div>
+  <div class="hero-badge hero-load d1"><span class="dot"></span>AI Meal &amp; Workout Plans · Free</div>
 
-  <h1 class="hero-load d2">Nutrition tracking<br />that <span class="grad">actually</span><br />gets it right.</h1>
+  <h1 class="hero-load d2">Your AI <span class="grad">meal plan</span><br />&amp; <span class="grad">workout split</span>,<br />built in one tap.</h1>
 
   <p class="hero-sub hero-load d3">
-    Snap a photo and Macrova's AI logs the full macro breakdown in seconds — then builds your meal plans, workout splits, and weekly health insights. No spreadsheets, no guessing.
+    Tell Macrova your goal and its AI instantly builds a full week of meals and a personalized gym plan around your body — then tracks every macro from a single photo. Your whole nutrition coach, free in your pocket.
   </p>
 
   <div class="hero-ctas hero-load d4">
     <a href="https://play.google.com/store/apps/details?id=com.ruturajjena.junkfoodtracker" class="btn-primary" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76a2 2 0 001.6-.22l13.14-7.58L14.6 12 3.18 23.76zM20.54 10.27L17.7 8.65 14.28 12l3.42 3.35 2.84-1.63a2 2 0 000-3.45zM2.01 1.1A2 2 0 002 1.6v20.8a2 2 0 00.01.5L14.1 12 2.01 1.1zM4.78.46L17.7 8.02 14.6 11.06 4.78.46z"/></svg>
-      Get it on Android
+      Get your free plan
     </a>
-    <a href="#features" class="btn-secondary">Explore features
+    <a href="#features" class="btn-secondary">See how it works
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
   </div>
 
   <div class="hero-meta hero-load d4">
     <span><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>5.0 on Google Play</span>
-    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free to start</span>
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free — no card needed</span>
     <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg>7 languages</span>
   </div>
 
-  <!-- PHONE STAGE -->
+  <!-- 3-PHONE CLUSTER -->
   <div class="hero-stage hero-load d5">
-    <div class="hero-phone" id="heroPhone">
-      <div class="notch"></div>
-      <img src="assets/phone-hero-center.png" alt="Macrova dashboard showing daily calorie and macro targets" width="300" height="649" fetchpriority="high" />
-    </div>
-
-    <!-- Floating macro cards -->
-    <div class="float-card fc-protein">
-      <div class="fc-row">
-        <div class="fc-ico" style="background:rgba(125,235,196,0.16);color:var(--mint)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5l11 11M21 3l-6 1 5 5 1-6zM3 21l6-1-5-5-1 6z"/></svg>
-        </div>
-        <div>
-          <div class="fc-label">Protein</div>
-          <div class="fc-value">130<small>g</small></div>
-        </div>
+    <div class="phone-cluster" id="cluster">
+      <div class="device side left">
+        <div class="notch"></div>
+        <img src="assets/phone-hero-center.png" alt="Macrova dashboard tracking daily calories and macros" width="222" height="481" loading="lazy" />
+      </div>
+      <div class="device center">
+        <div class="notch"></div>
+        <img src="assets/phone-hero-right.png" alt="AI-generated weekly meal plan in Macrova" width="268" height="582" fetchpriority="high" />
+      </div>
+      <div class="device side right">
+        <div class="notch"></div>
+        <img src="assets/feat-plans.png" alt="AI-generated workout split in Macrova" width="222" height="481" loading="lazy" />
       </div>
     </div>
 
-    <div class="float-card fc-carbs">
-      <div class="fc-label">Carbs</div>
-      <div class="fc-value" style="color:var(--carb)">185<small>g</small></div>
-      <div class="fc-bar"><i style="width:62%;background:var(--carb)"></i></div>
+    <div class="ai-pill">
+      <span class="pi" style="background:rgba(125,235,196,0.16);color:var(--mint)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.1L19 9l-5.1 1.9L12 16l-1.9-5.1L5 9l5.1-1.9z"/></svg>
+      </span>
+      <span><b>Plan ready</b><span class="cap">Generated in 8s</span></span>
     </div>
 
-    <div class="float-card fc-cal">
-      <div class="fc-row">
-        <div class="fc-ico" style="background:rgba(52,200,224,0.16);color:var(--aqua)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C9 6 8 8 8 11a4 4 0 008 0c0-1.5-.5-3-2-5 .2 2-1 3-2 3 .5-3-1-5 0-7z"/></svg>
-        </div>
-        <div>
-          <div class="fc-label">Calories left</div>
-          <div class="fc-value">1,160</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="float-card fc-scan">
-      <div class="fc-row">
-        <div class="fc-ico" style="background:rgba(232,184,80,0.16);color:var(--gold)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-        <div>
-          <div class="fc-label">AI scan</div>
-          <div class="fc-value" style="font-size:1.05rem;color:var(--mint)">Meal logged ✓</div>
-        </div>
-      </div>
+    <div class="ai-pill two">
+      <span class="pi" style="background:rgba(52,200,224,0.16);color:var(--aqua)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      </span>
+      <span><b>Photo logged</b><span class="cap">Macros in seconds</span></span>
     </div>
   </div>
 </header>
@@ -504,65 +494,87 @@
 <section class="block" id="features">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">Core features</div>
-      <h2 class="section-title">Your nutrition coach,<br />now in your pocket.</h2>
-      <p class="section-sub">Everything you need to track, plan, and improve — built into one clean, intelligent app powered by AI.</p>
+      <div class="eyebrow">The core of Macrova</div>
+      <h2 class="section-title">AI builds the plan.<br />You just show up.</h2>
+      <p class="section-sub">Most apps make you do the work. Macrova hands you a done-for-you meal plan and gym split on day one — then keeps them on track automatically.</p>
     </div>
 
     <div class="features-grid">
-      <!-- Big: AI Food Scanner -->
+      <!-- BIG: AI Meal & Workout Plans (hero feature) -->
       <div class="feat big reveal">
         <div class="feat-glow"></div>
         <div>
-          <span class="feat-tag teal">AI Food Scanner</span>
-          <div class="feat-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9a2 2 0 012-2h1l1-2h6l1 2h1a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><circle cx="10" cy="12" r="3.2"/><path d="M19 4l.6 1.4L21 6l-1.4.6L19 8l-.6-1.4L17 6l1.4-.6z"/></svg>
+          <div class="feat-tags">
+            <span class="feat-tag teal">AI Plans</span>
+            <span class="feat-tag">Most loved</span>
           </div>
-          <h3>Log food with your camera</h3>
-          <p>Point, shoot, done. Macrova's AI identifies your meal from a single photo and logs the full macro breakdown instantly — no manual searching, no guessing portion sizes.</p>
+          <div class="feat-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5a4.5 4.5 0 016.4 0M4 4a8 8 0 0111.3 0"/><path d="M14 13l6 6M16 11l5 5"/><circle cx="9" cy="9" r="2"/></svg>
+          </div>
+          <h3>A full meal plan &amp; workout split — generated for you</h3>
+          <p>Pick your goal and Macrova's AI instantly builds a week of meals with exact macros and a personalized gym program with sets, reps, and rest. Don't like it? Regenerate in seconds. This is the feature people download Macrova for.</p>
         </div>
-        <div class="feat-shot">
-          <img src="assets/feat-scan.png" alt="Macrova analyzing a photo of a meal to log its nutrition" loading="lazy" width="300" height="649" />
+        <div class="device feat-device">
+          <div class="notch"></div>
+          <img src="assets/phone-hero-right.png" alt="AI-generated weekly meal plan with macros in Macrova" loading="lazy" width="264" height="573" />
+        </div>
+      </div>
+
+      <!-- AI Workout split -->
+      <div class="feat reveal" data-delay="1">
+        <div class="feat-glow"></div>
+        <span class="feat-tag">AI Plans</span>
+        <div class="feat-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5l11 11M21 3l-6 1 5 5 1-6zM3 21l6-1-5-5-1 6z"/></svg>
+        </div>
+        <h3>Personalized workout splits</h3>
+        <p>Push-pull-legs, full body, or your own style — Macrova programs your week with the right sessions, exercises, and progression for your level.</p>
+        <div class="device feat-device">
+          <div class="notch"></div>
+          <img src="assets/feat-plans.png" alt="AI workout split with exercises in Macrova" loading="lazy" width="230" height="500" />
+        </div>
+      </div>
+
+      <!-- AI Food Scanner -->
+      <div class="feat reveal" data-delay="2">
+        <div class="feat-glow"></div>
+        <span class="feat-tag teal">AI Scanner</span>
+        <div class="feat-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9a2 2 0 012-2h1l1-2h6l1 2h1a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><circle cx="10" cy="12" r="3.2"/><path d="M19 4l.6 1.4L21 6l-1.4.6L19 8l-.6-1.4L17 6l1.4-.6z"/></svg>
+        </div>
+        <h3>Log food with a photo</h3>
+        <p>Point, shoot, done. The AI identifies your meal and logs the full macro breakdown instantly — no searching, no weighing, no guessing.</p>
+        <div class="device feat-device">
+          <div class="notch"></div>
+          <img src="assets/feat-scan.png" alt="Macrova analyzing a photo of a meal to log its nutrition" loading="lazy" width="230" height="500" />
         </div>
       </div>
 
       <!-- Macro tracking -->
-      <div class="feat reveal" data-delay="1">
+      <div class="feat reveal" data-delay="3">
         <div class="feat-glow"></div>
         <div class="feat-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 019 9h-9z"/><circle cx="12" cy="12" r="3.4"/></svg>
         </div>
-        <h3>Personalized daily targets</h3>
-        <p>Set your goal — lose weight, build muscle, or maintain — and get precise calorie and macro targets tailored to your body and lifestyle.</p>
-        <div class="feat-shot inline">
-          <img src="assets/feat-targets.png" alt="Daily calorie and macro targets in Macrova" loading="lazy" width="300" height="649" />
-        </div>
-      </div>
-
-      <!-- AI plans -->
-      <div class="feat reveal" data-delay="2">
-        <div class="feat-glow"></div>
-        <span class="feat-tag">Premium</span>
-        <div class="feat-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5a4.5 4.5 0 016.4 0M4 4a8 8 0 0111.3 0"/><path d="M14 13l6 6M16 11l5 5"/><circle cx="9" cy="9" r="2"/></svg>
-        </div>
-        <h3>AI meal &amp; workout plans</h3>
-        <p>Get a full weekly nutrition plan and a personalized gym split — both generated from your goals, schedule, and fitness level in a single tap.</p>
-        <div class="feat-shot inline">
-          <img src="assets/feat-plans.png" alt="AI-generated meal and workout plans in Macrova" loading="lazy" width="300" height="649" />
+        <h3>Targets that fit you</h3>
+        <p>Lose fat, build muscle, or maintain — Macrova sets precise daily calorie and macro goals for your body and updates them as you progress.</p>
+        <div class="device feat-device">
+          <div class="notch"></div>
+          <img src="assets/feat-targets.png" alt="Daily calorie and macro targets in Macrova" loading="lazy" width="230" height="500" />
         </div>
       </div>
 
       <!-- Health lab -->
-      <div class="feat reveal" data-delay="3">
+      <div class="feat reveal" data-delay="4">
         <div class="feat-glow"></div>
         <div class="feat-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6l-5 8a2 2 0 002 3h12a2 2 0 002-3l-5-8V3"/><path d="M8 3h8M8 13h8"/></svg>
         </div>
         <h3>AI Health Lab</h3>
-        <p>Go beyond calorie counts. Macrova analyzes your eating patterns, spots gaps in your nutrition, and delivers personalized weekly recommendations.</p>
-        <div class="feat-shot inline">
-          <img src="assets/feat-healthlab.png" alt="AI Health Lab weekly insights in Macrova" loading="lazy" width="300" height="649" />
+        <p>Go beyond calorie counts. Macrova spots gaps in your nutrition and delivers personalized weekly recommendations to keep you improving.</p>
+        <div class="device feat-device">
+          <div class="notch"></div>
+          <img src="assets/feat-healthlab.png" alt="AI Health Lab weekly insights in Macrova" loading="lazy" width="230" height="500" />
         </div>
       </div>
     </div>
@@ -703,8 +715,8 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-card reveal">
-    <h2>Ready to track<br /><span class="grad">smarter?</span></h2>
-    <p>Free to download. AI-powered from day one. Available on Android now — iOS coming soon.</p>
+    <h2 id="ctaType" data-pre="Ready to track " data-grad="smarter?" aria-label="Ready to track smarter?"><span class="tw-static"></span><span class="grad tw-grad"></span><span class="type-caret" aria-hidden="true">|</span></h2>
+    <p>Get your free AI meal plan and workout split in under a minute. No card, no commitment — just download and start.</p>
     <div class="store-btns">
       <a href="https://play.google.com/store/apps/details?id=com.ruturajjena.junkfoodtracker" class="store-btn live" target="_blank" rel="noopener">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76a2 2 0 001.6-.22l13.14-7.58L14.6 12 3.18 23.76zM20.54 10.27L17.7 8.65 14.28 12l3.42 3.35 2.84-1.63a2 2 0 000-3.45zM2.01 1.1A2 2 0 002 1.6v20.8a2 2 0 00.01.5L14.1 12 2.01 1.1zM4.78.46L17.7 8.02 14.6 11.06 4.78.46z"/></svg>
@@ -759,56 +771,100 @@
   menu.querySelectorAll('[data-close]').forEach(function(a){ a.addEventListener('click', function(){ openMenu(false); }); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') openMenu(false); });
 
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduce){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('in'); });
+  /* Reveal-on-scroll, counters and CTA typewriter — driven by a single
+     scroll/resize/load check so they never depend on IntersectionObserver
+     firing (more robust across browsers and headless renderers). */
+  var revealEls = [].slice.call(document.querySelectorAll('.reveal'));
+  var counters  = [].slice.call(document.querySelectorAll('[data-count]'));
+  var ctaType   = document.getElementById('ctaType');
+
+  function inView(el, ratio){
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    if(r.height === 0) return r.top < vh && r.bottom > 0;
+    var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    return visible > 0 && (visible / Math.min(r.height, vh)) >= (ratio || 0.12);
   }
 
-  /* Animated counters */
-  var counters = document.querySelectorAll('[data-count]');
-  var runCount = function(el){
+  function runCount(el){
+    if(el.dataset.done) return; el.dataset.done = '1';
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-suffix') || '';
-    var dur = 1400, start = null;
-    if (reduce){ el.textContent = (Number.isInteger(target)?target:target.toFixed(1)) + suffix; return; }
+    var fmt = function(v){ return (Number.isInteger(target) ? Math.round(v) : v.toFixed(1)) + suffix; };
+    if(reduce){ el.textContent = fmt(target); return; }
+    var start = null;
     var step = function(ts){
       if(!start) start = ts;
-      var p = Math.min((ts - start)/dur, 1);
-      var eased = 1 - Math.pow(1-p, 3);
-      var val = target * eased;
-      el.textContent = (Number.isInteger(target) ? Math.round(val) : val.toFixed(1)) + suffix;
+      var p = Math.min((ts - start)/1400, 1);
+      el.textContent = fmt(target * (1 - Math.pow(1-p, 3)));
       if(p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  };
-  if('IntersectionObserver' in window){
-    var co = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ runCount(en.target); co.unobserve(en.target); } });
-    }, { threshold: 0.6 });
-    counters.forEach(function(el){ co.observe(el); });
-  } else { counters.forEach(runCount); }
+  }
 
-  /* Hero phone 3D tilt (desktop, fine pointer, non-reduced) */
-  var phone = document.getElementById('heroPhone');
-  if(phone && !reduce && window.matchMedia('(pointer:fine)').matches){
-    var stage = phone.closest('.hero-stage');
+  var twDone = false;
+  function typeCTA(){
+    if(!ctaType || twDone) return; twDone = true;
+    var pre = ctaType.getAttribute('data-pre'), grad = ctaType.getAttribute('data-grad');
+    var s = ctaType.querySelector('.tw-static'), g = ctaType.querySelector('.tw-grad');
+    if(reduce){ s.textContent = pre; g.textContent = grad; return; }
+    var i = 0, j = 0;
+    (function tick(){
+      if(i < pre.length){ s.textContent = pre.slice(0, ++i); setTimeout(tick, 70); }
+      else if(j < grad.length){ g.textContent = grad.slice(0, ++j); setTimeout(tick, 85); }
+    })();
+  }
+
+  if(reduce){ revealEls.forEach(function(e){ e.classList.add('in'); }); }
+
+  function checkAll(){
+    for(var i = revealEls.length - 1; i >= 0; i--){
+      if(inView(revealEls[i], 0.12)){ revealEls[i].classList.add('in'); revealEls.splice(i, 1); }
+    }
+    for(var k = counters.length - 1; k >= 0; k--){
+      if(inView(counters[k], 0.5)){ runCount(counters[k]); counters.splice(k, 1); }
+    }
+    if(ctaType && !twDone && inView(ctaType, 0.4)) typeCTA();
+  }
+
+  var ticking = false;
+  function onViewCheck(){ if(!ticking){ ticking = true; requestAnimationFrame(function(){ checkAll(); ticking = false; }); } }
+  window.addEventListener('scroll', onViewCheck, { passive:true });
+  window.addEventListener('resize', onViewCheck, { passive:true });
+  window.addEventListener('load', checkAll);
+  checkAll();
+
+  /* IntersectionObserver as a second trigger path (primary in real browsers) */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var t = en.target;
+        if(t.classList.contains('reveal')) t.classList.add('in');
+        if(t.hasAttribute('data-count')) runCount(t);
+        if(t === ctaType) typeCTA();
+        io.unobserve(t);
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.reveal, [data-count]').forEach(function(el){ io.observe(el); });
+    if(ctaType) io.observe(ctaType);
+  }
+
+  /* Hero phone-cluster parallax tilt (desktop, fine pointer, non-reduced) */
+  var cluster = document.getElementById('cluster');
+  if(cluster && !reduce && window.matchMedia('(pointer:fine)').matches){
+    var stage = cluster.closest('.hero-stage');
     var raf = null, tx = 0, ty = 0;
     stage.addEventListener('mousemove', function(e){
       var r = stage.getBoundingClientRect();
       tx = ((e.clientX - r.left)/r.width - 0.5);
       ty = ((e.clientY - r.top)/r.height - 0.5);
       if(!raf) raf = requestAnimationFrame(function(){
-        phone.style.transform = 'rotateY(' + (tx*10) + 'deg) rotateX(' + (-ty*8) + 'deg)';
+        cluster.style.transform = 'rotateY(' + (tx*6) + 'deg) rotateX(' + (-ty*4) + 'deg)';
         raf = null;
       });
     });
-    stage.addEventListener('mouseleave', function(){ phone.style.transform = ''; });
+    stage.addEventListener('mouseleave', function(){ cluster.style.transform = ''; });
   }
 
   /* Lightweight particle field */
