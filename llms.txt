@@ -10,7 +10,6 @@ Macrova is built for people who want to track calories, protein, carbs, and fat 
 - Price: Free to download and start. Optional Premium unlocks AI meal + workout plans.
 - Core capabilities: AI photo food logging, personalized calorie/macro targets, AI meal plans, AI workout plans, AI Health Lab weekly insights, barcode scanning, global food database.
 - Languages: English, Hindi, Odia, French, Spanish, German, Japanese.
-- Rating: 5.0 on Google Play.
 
 ## Primary pages
 
