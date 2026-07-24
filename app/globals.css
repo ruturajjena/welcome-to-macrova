@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Lenis smooth-scroll: disable native smooth so it doesn't fight the library */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-ink);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* clip (not hidden) prevents horizontal scroll WITHOUT making <body> a scroll
+     container — that would break position:sticky (the pinned phone). */
+  overflow-x: clip;
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Reusable helpers
+ * ------------------------------------------------------------------------ */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, var(--c-accent), var(--c-accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: color-mix(in srgb, var(--c-surface) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in srgb, var(--c-border) 70%, transparent);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 ease-out;
+  }
+  .btn-accent {
+    background-image: linear-gradient(135deg, var(--c-accent), var(--c-accent-2));
+    color: var(--c-accent-ink);
+    box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--c-accent) 60%, transparent);
+  }
+  .btn-accent:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px -8px color-mix(in srgb, var(--c-accent) 70%, transparent);
+  }
+  .btn-accent:active {
+    transform: translateY(0) scale(0.985);
+  }
+  .btn-ghost {
+    @apply border;
+    border-color: var(--c-border);
+    background: color-mix(in srgb, var(--c-surface) 60%, transparent);
+    color: var(--c-ink);
+  }
+  .btn-ghost:hover {
+    border-color: color-mix(in srgb, var(--c-accent) 45%, var(--c-border));
+    transform: translateY(-1px);
+  }
+
+  .card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    @apply rounded-card shadow-soft;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wider;
+    border-color: var(--c-border);
+    color: var(--c-muted);
+  }
+}
+
+/* Thin, on-brand scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--c-faint) 55%, transparent);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Hide scrollbar for horizontal reels but keep scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
