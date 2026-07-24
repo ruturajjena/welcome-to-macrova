@@ -1,12 +1,12 @@
 # Macrova
 
-> Macrova is a free AI-powered nutrition and macro tracking app for Android. It logs food from a photo, sets personalized calorie and macro targets, and generates AI meal plans and workout plans. It also includes "AI Health Lab," which analyzes weekly eating patterns and surfaces personalized nutrition recommendations.
+> Macrova is a free AI-powered nutrition and macro tracking app for iOS and Android. It logs food from a photo, sets personalized calorie and macro targets, and generates AI meal plans and workout plans. It also includes "AI Health Lab," which analyzes weekly eating patterns and surfaces personalized nutrition recommendations.
 
-Macrova is built for people who want to track calories, protein, carbs, and fat without the friction of manual food search or spreadsheets. It is currently available on Android (iOS coming soon) and is localized in 7 languages: English, Hindi, Odia, French, Spanish, German, and Japanese.
+Macrova is built for people who want to track calories, protein, carbs, and fat without the friction of manual food search or spreadsheets. It is available on iOS and Android and is localized in 7 languages: English, Hindi, Odia, French, Spanish, German, and Japanese.
 
 ## Key facts
 
-- Platform: Android (Google Play). iOS: coming soon.
+- Platform: iOS (App Store) and Android (Google Play).
 - Price: Free to download and start. Optional Premium unlocks AI meal + workout plans.
 - Core capabilities: AI photo food logging, personalized calorie/macro targets, AI meal plans, AI workout plans, AI Health Lab weekly insights, barcode scanning, global food database.
 - Languages: English, Hindi, Odia, French, Spanish, German, Japanese.
@@ -19,6 +19,7 @@ Macrova is built for people who want to track calories, protein, carbs, and fat 
 
 ## Download
 
+- [Get Macrova on the App Store](https://apps.apple.com/app/macrova)
 - [Get Macrova on Google Play](https://play.google.com/store/apps/details?id=com.ruturajjena.junkfoodtracker)
 
 ## Contact

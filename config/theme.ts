@@ -58,13 +58,15 @@ export const theme = {
     logo: { lead: "macro", tail: "va" },
     domain: "https://macrova.in",
     tagline: "Free AI nutrition, calorie & workout tracker",
-    // Real store links — swap these for the production listing URLs.
+    // Google Play link is the real production listing (from the live site).
+    // Apple link is a best-guess placeholder — swap for the real App Store URL.
     stores: {
       apple: "https://apps.apple.com/app/macrova",
-      google: "https://play.google.com/store/apps/details?id=in.macrova.app",
+      google:
+        "https://play.google.com/store/apps/details?id=com.ruturajjena.junkfoodtracker",
     },
     social: [
-      { label: "Instagram", href: "https://instagram.com/macrova.app", icon: "Instagram" },
+      { label: "Instagram", href: "https://www.instagram.com/macrova_ai", icon: "Instagram" },
       { label: "X", href: "https://x.com/macrova_app", icon: "Twitter" },
     ],
   },
