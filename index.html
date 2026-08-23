@@ -512,6 +512,18 @@
     .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 30px; }
     .faq-item h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text); }
     .faq-item p { font-size: 0.97rem; color: var(--text-dim); line-height: 1.7; }
+
+    /* ── WEB DASHBOARD ── */
+    .web-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 56px; }
+    .web-copy h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .web-list { display: grid; gap: 22px; margin: 30px 0 34px; }
+    .web-item { display: flex; gap: 14px; align-items: flex-start; }
+    .web-ico { width: 38px; height: 38px; flex-shrink: 0; border-radius: 11px; display: flex; align-items: center; justify-content: center; background: rgba(75,168,188,0.12); border: 1px solid rgba(75,168,188,0.22); color: #4BA8BC; }
+    .web-item p { font-size: 0.92rem; line-height: 1.6; color: var(--text-dim); }
+    .web-shot { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 40px 90px rgba(0,0,0,0.55); }
+    .web-shot img { width: 100%; display: block; }
+    .web-note { font-size: 0.8rem; color: var(--text-dim); margin-top: 16px; display: flex; align-items: center; gap: 8px; }
+    @media (max-width: 900px) { .web-grid { grid-template-columns: 1fr; gap: 40px; } }
   </style>
 </head>
 <body>
@@ -537,7 +549,9 @@
     <a href="#how" class="link">How it works</a>
     <a href="#preview" class="link">Preview</a>
     <a href="#proof" class="link">Reviews</a>
+    <a href="#web" class="link">Web app</a>
     <a href="#faq" class="link">FAQ</a>
+    <a href="https://app.macrova.in" class="link">Sign in</a>
     <a href="#download" class="btn-nav" data-store="auto">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5z"/></svg>
       Download Free
@@ -554,7 +568,9 @@
   <a href="#how" data-close>How it works</a>
   <a href="#preview" data-close>Preview</a>
   <a href="#proof" data-close>Reviews</a>
+  <a href="#web" data-close>Web app</a>
   <a href="#faq" data-close>FAQ</a>
+  <a href="https://app.macrova.in" data-close>Sign in</a>
   <a href="#download" class="btn-nav" data-store="auto" data-close>Download Free</a>
 </div>
 
@@ -821,6 +837,60 @@
   </div>
 </section>
 
+<!-- WEB DASHBOARD -->
+<section class="block" id="web">
+  <div class="container">
+    <div class="reveal head-center">
+      <div class="eyebrow">Also on the web</div>
+      <h2 class="section-title">Your numbers,<br />on the big screen.</h2>
+      <p class="lead" style="margin:0 auto;">Sign in at <strong>app.macrova.in</strong> with the same account to explore your nutrition in full detail — no extra setup.</p>
+    </div>
+
+    <div class="web-grid">
+      <div class="web-copy reveal">
+        <div class="web-list">
+          <div class="web-item">
+            <span class="web-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            <div>
+              <h3>Deeper analytics</h3>
+              <p>Weekly, monthly and yearly trends for calories and every macro — with charts that are simply easier to read on a larger screen.</p>
+            </div>
+          </div>
+          <div class="web-item">
+            <span class="web-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/></svg></span>
+            <div>
+              <h3>Insights at a glance</h3>
+              <p>Your nutrition score, healthy-eating rate, protein consistency and meal timing — all derived from the meals you already log.</p>
+            </div>
+          </div>
+          <div class="web-item">
+            <span class="web-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v3"/><path d="M16 4v3"/></svg></span>
+            <div>
+              <h3>Plans, laid out</h3>
+              <p>Premium meal plans and workout splits displayed day by day, with ingredients, shopping lists, sets and reps.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://app.macrova.in" class="btn-primary">
+          Open the web dashboard
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <p class="web-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Sign in with your existing Macrova account. Accounts are created in the app.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="web-shot">
+          <img src="assets/web-dash-desktop.png" alt="Macrova web dashboard showing daily calories, macro rings and a 14-day calorie trend chart" width="1440" height="900" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SOCIAL PROOF -->
 <section class="block" id="proof">
   <div class="container head-center">
@@ -922,6 +992,7 @@
     </div>
     <div class="footer-links">
       <a href="#download" data-store="auto">Download</a>
+      <a href="https://app.macrova.in">Web Dashboard</a>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/support/">Support</a>
       <a href="https://www.instagram.com/macrova_ai" target="_blank" rel="noopener">Instagram</a>
